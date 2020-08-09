@@ -1,0 +1,22 @@
+getwd()
+setwd('/Users/luxinyi/Google 云端硬盘/harvard')
+
+library(quantmod)
+library(openxlsx)
+library(DMwR)
+data1 <- read.csv('homework3datanew3.csv')
+
+
+
+
+
+data1 <- cbind.data.frame(data1)
+data1_NA <- data1
+for(i in 1:100){
+  x <- sample(1:nrow(data1),1)
+  y <- sample(1:ncol(data1),1)
+  data1_NA[sample(1:nrow(data1),1),sample(2:ncol(data1),1)] <- NA
+}
+
+
+data2 <- knnImputation(data1_NA)
